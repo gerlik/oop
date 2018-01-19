@@ -8,3 +8,10 @@
 
 //loeme sisse seadistuse
 require_once 'conf.php';
+
+//uus testobjekt
+$testTabel = new template('test');
+//testvaade
+echo '<pre>';
+print_r($testTabel);
+echo '</pre>';
