@@ -11,7 +11,12 @@ require_once 'conf.php';
 
 //uus testobjekt
 $testTabel = new template('test');
+//määrame reaalväärtsed
+$testTabel->set('esimene','1');
+$testTabel->set('teine','2');
 //testvaade
 echo '<pre>';
 print_r($testTabel);
 echo '</pre>';
+
+echo $testTabel->parse();
