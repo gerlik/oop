@@ -11,3 +11,15 @@ $menuTmpl = new template('menu.menu');
 //loome elementide malli objekti
 $menuItemTmpl = new template('menu.menu_item');
 
+$menuItemTmpl->set('menu_item_name','esimene');
+echo '<pre>';
+print_r($menuItemTmpl);
+echo '</pre>';
+
+$menuTmpl->set('menu_items', $menuItemTmpl->parse());
+echo '<pre>';
+print_r($menuItemTmpl);
+echo '</pre>';
+
+$menu = $menuItemTmpl->parse();
+$mainTmpl->set('menu', $menu);

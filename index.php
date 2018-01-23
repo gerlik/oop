@@ -17,7 +17,8 @@ $mainTmpl->set('page_title','Lehe pealkiri');
 $mainTmpl->set('user', 'Kasutaja');
 $mainTmpl->set('title','Pealkiri');
 $mainTmpl->set('lang_bar','Keeleriba');
-$mainTmpl->set('menu','Lehe menüü');
+//katsetus
+require_once 'menu.php';
 $mainTmpl->set('content','Lehe sisu');
 //määrame reaalväärtsed
 //$testTabel->set('esimene','1');
@@ -28,3 +29,4 @@ print_r($mainTmpl);
 echo '</pre>';
 
 echo $mainTmpl->parse();
+
