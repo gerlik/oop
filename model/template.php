@@ -68,7 +68,7 @@ class template
         $this->content = file_get_contents($file);
 
     }
-    //funktrioon paari lisamiseks
+    //funktsioon paari lisamiseks
     function set($name, $value){
         $this->vars[$name] = $value;
     }

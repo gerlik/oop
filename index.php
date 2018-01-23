@@ -10,13 +10,21 @@
 require_once 'conf.php';
 
 //uus testobjekt
-$testTabel = new template('test');
+//$testTabel = new template('test');
+$mainTmpl = new template('main');
+$mainTmpl->set('lang','et');
+$mainTmpl->set('page_title','Lehe pealkiri');
+$mainTmpl->set('user', 'Kasutaja');
+$mainTmpl->set('title','Pealkiri');
+$mainTmpl->set('lang_bar','Keeleriba');
+$mainTmpl->set('menu','Lehe menüü');
+$mainTmpl->set('content','Lehe sisu');
 //määrame reaalväärtsed
-$testTabel->set('esimene','1');
-$testTabel->set('teine','2');
+//$testTabel->set('esimene','1');
+//$testTabel->set('teine','2');
 //testvaade
 echo '<pre>';
-print_r($testTabel);
+print_r($mainTmpl);
 echo '</pre>';
 
-echo $testTabel->parse();
+echo $mainTmpl->parse();
