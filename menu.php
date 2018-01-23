@@ -10,16 +10,12 @@
 $menuTmpl = new template('menu.menu');
 //loome elementide malli objekti
 $menuItemTmpl = new template('menu.menu_item');
-
+//esimene
 $menuItemTmpl->set('menu_item_name','esimene');
-echo '<pre>';
-print_r($menuItemTmpl);
-echo '</pre>';
-
-$menuTmpl->set('menu_items', $menuItemTmpl->parse());
-echo '<pre>';
-print_r($menuItemTmpl);
-echo '</pre>';
-
+$menuTmpl->add('menu_items', $menuItemTmpl->parse());
+//teine
+$menuItemTmpl->set('menu_item_name','teine');
+$menuTmpl->add('menu_items', $menuItemTmpl->parse());
+//valmis vaade
 $menu = $menuItemTmpl->parse();
 $mainTmpl->set('menu', $menu);
