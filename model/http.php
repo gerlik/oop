@@ -30,8 +30,6 @@ class http
             foreach ($constName as $consts) {
                 if (isset($this->server[$consts])) {
                     define($consts, $this->server[$consts]);
-
-
             }
         }
     }
