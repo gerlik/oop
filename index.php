@@ -9,11 +9,13 @@
 //loeme sisse seadistuse
 require_once 'conf.php';
 
-require_once 'control.php';
-
 //uus testobjekt
 //$testTabel = new template('test');
 $mainTmpl = new template('main');
+
+//lubame kontrollerite haldust
+require_once 'control.php';
+
 $mainTmpl->set('lang','et');
 $mainTmpl->set('page_title','Lehe pealkiri');
 $mainTmpl->set('user', 'Kasutaja');
@@ -21,7 +23,7 @@ $mainTmpl->set('title','Pealkiri');
 $mainTmpl->set('lang_bar','Keeleriba');
 //katsetus
 require_once 'menu.php';
-$mainTmpl->set('content','Lehe sisu');
+
 //määrame reaalväärtsed
 //$testTabel->set('esimene','1');
 //$testTabel->set('teine','2');
