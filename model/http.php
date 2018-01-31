@@ -25,4 +25,14 @@ class http
         $this->vars = array_merge($_GET, $_POST);
         $this->server = $_SERVER;
     }
+    function initConst(){
+        $constName = array('HTTP_HOST', 'SCRIPT_NAME', 'REMOTE_ADDR');
+            foreach ($constName as $consts) {
+                if (isset($this->server[$consts])) {
+                    define($consts, $this->server[$consts]);
+
+
+            }
+        }
+    }
 }

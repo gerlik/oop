@@ -23,10 +23,11 @@ $mainTmpl->set('content','Lehe sisu');
 //määrame reaalväärtsed
 //$testTabel->set('esimene','1');
 //$testTabel->set('teine','2');
-//testvaade
-echo '<pre>';
-print_r($mainTmpl);
-echo '</pre>';
 
 echo $mainTmpl->parse();
+$pairs = array(
+    'control' => 'login',
+    'user' => 'test');
+$link = $http->getLink($pairs);
+echo $link;
 
