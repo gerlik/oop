@@ -25,8 +25,6 @@ $mainTmpl->set('content','Lehe sisu');
 //$testTabel->set('teine','2');
 
 echo $mainTmpl->parse();
-$link = $http->getLink(array(
-    'control' => 'login',
-    'user' => 'test'));
-echo $link;
+//kontrollime control sisu
+echo $http->get('control');
 
