@@ -18,6 +18,7 @@ class http
     public function __construct()
     {
         $this->init();
+        $this->initConst();
     }
 
     //loeme vajalikud väärtused sisse
