@@ -13,15 +13,18 @@ $menuItemTmpl = new template('menu.menu_item');
 
 //esimene
 $menuItemTmpl->set('menu_item_name','esimene');
-$menuTmpl->add('menu_items', $menuItemTmpl->parse());
-//loome lingi
+//link
 $link = $http->getLink(array('control' => 'esimene'));
-
+$menuItemTmpl->set('link', $link);
+$menuTmpl->add('menu_items', $menuItemTmpl->parse());
 
 //teine
 $menuItemTmpl->set('menu_item_name','teine');
-$menuTmpl->add('menu_items', $menuItemTmpl->parse());
+//link
 $link = $http->getLink(array('control' => 'teine'));
+$menuItemTmpl->set('link', $link);
+$menuTmpl->add('menu_items', $menuItemTmpl->parse());
+
 //valmis vaade
 $menu = $menuTmpl->parse();
 $mainTmpl->set('menu', $menu);
