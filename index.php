@@ -9,6 +9,8 @@
 //loeme sisse seadistuse
 require_once 'conf.php';
 
+require_once 'control.php';
+
 //uus testobjekt
 //$testTabel = new template('test');
 $mainTmpl = new template('main');
@@ -26,5 +28,6 @@ $mainTmpl->set('content','Lehe sisu');
 
 echo $mainTmpl->parse();
 //kontrollime control sisu
+
 echo $http->get('control');
 
