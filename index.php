@@ -24,12 +24,7 @@ $mainTmpl->set('lang_bar','Keeleriba');
 //katsetus
 require_once 'menu.php';
 
-//määrame reaalväärtsed
-//$testTabel->set('esimene','1');
-//$testTabel->set('teine','2');
-
 echo $mainTmpl->parse();
 //kontrollime control sisu
 
 echo $http->get('control');
-

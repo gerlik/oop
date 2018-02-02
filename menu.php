@@ -11,6 +11,12 @@ $menuTmpl = new template('menu.menu');
 //loome elementide malli objekti
 $menuItemTmpl = new template('menu.menu_item');
 
+//avaleht
+$menuItemTmpl->set('menu_item_name', 'avaleht');
+$link = $http->getLink();
+$menuItemTmpl->set('link', $link);
+$menuTmpl->add('menu_items', $menuItemTmpl->parse());
+
 //esimene
 $menuItemTmpl->set('menu_item_name','esimene');
 //link
