@@ -21,12 +21,12 @@ $mainTmpl->set('page_title','Lehe pealkiri');
 $mainTmpl->set('user', 'Kasutaja');
 $mainTmpl->set('title','Pealkiri');
 $mainTmpl->set('lang_bar','Keeleriba');
-//katsetus
+//menüü loomine
 require_once 'menu.php';
 
 echo $mainTmpl->parse();
 //kontrollime control sisu
-
+$db->query('SELECT NOW()');
 echo '<pre>';
 print_r($db);
 echo '</pre>';
