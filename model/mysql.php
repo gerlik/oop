@@ -51,4 +51,19 @@ class mysql
         return $result;
     }
 
+    //funktsioon mis väljastab päringu
+    function getData($sql){
+        $result = $this->query($sql);
+        $data = array();
+        while ($row = mysqli_fetch_assoc($result)){
+            $data[] = $row;
+        }
+        if (count($data == 0)){
+            return false;
+        }else{
+            return $data;
+
+        }
+    }
+
 }
