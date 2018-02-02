@@ -8,5 +8,34 @@
 
 class mysql
 {
+    //klassi väljad
+    var $conn = false;  //db ühendus
+    var $host = false;  //serveri nimi
+    var $user = false;  //kasutaja
+    var $pass = false;  //kasutaja parool
+    var $dbname = false;    //db nimi
 
+    /**
+     * mysql constructor.
+     * @param bool $host
+     * @param bool $user
+     * @param bool $pass
+     * @param bool $dbname
+     */
+    public function __construct($host, $user, $pass, $dbname)
+    {
+        $this->host = $host;
+        $this->user = $user;
+        $this->pass = $pass;
+        $this->dbname = $dbname;
+        $this->connect(); //tekitab ühenduse andmebaasiga
+    }
+
+    //funktsioon ühenduse loomiseks
+    function connect(){
+        $this>$conn = mysqli_connect($this->host, $this->user, $this->pass, $this->dbname);
+        if ($this->conn == false){
+            echo 'Probleem andmebaasi ühendamisega';
+        }
+    }
 }
