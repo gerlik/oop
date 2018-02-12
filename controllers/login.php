@@ -14,6 +14,8 @@ $loginForm->set('parool', 'Parool');
 $loginForm->set('nupp', 'Logi sisse!');
 //paneme väärtused malli
 //vaja trükkida sisselogimisvorm{content}
+$link = $http->getLink(array('control'=>'login_do'));
+$loginForm->set('link', $link);
 $mainTmpl->set('content', $loginForm->parse());
 
 
