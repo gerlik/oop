@@ -41,4 +41,10 @@ class http
             return false;
         }
     }
+    // loome funktisooni, mis paneb veebi paarid paika
+    // kujul nimi=väärtus
+    function set($name, $value){
+        $this->vars[$name] = $value;
+    }
+
 }
