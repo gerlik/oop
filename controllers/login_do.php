@@ -16,9 +16,12 @@ echo $password.'<br />';
 $sql = 'SELECT * FROM user '.
     'WHERE username='.fixDb($username).
     ' AND password='.fixDb(md5($password));
-echo $sql.'<br />';
-
 $result = $db->getData($sql);
-echo '<pre>';
-print_r($result);
-echo '</pre>';
+//kontrollime, kes andmed on olemas
+if($result != false){
+    //kasutajale tuleb avade töösessioon
+    echo 'Oled peaaegu sisse logitud <br />';
+}else {
+    //peab tagasi suunama sisse logima
+    echo 'Suuname sisselogimisele<br />';
+}
