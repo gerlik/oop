@@ -23,3 +23,6 @@ $mainTmpl->set('lang_bar', 'Keeleriba');
 require_once 'menu.php';
 
 echo $mainTmpl->parse();
+
+$sid = md5(uniqid(time().mt_rand(1,1000), true));
+

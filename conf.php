@@ -26,6 +26,7 @@ require_once MODEL_DIR.'template.php';
 require_once MODEL_DIR.'http.php';
 require_once MODEL_DIR.'linkobject.php';
 require_once MODEL_DIR.'mysql.php';
+require_once MODEL_DIR.'session.php';
 
 //nõuan vajalikud abiconf failid
 require_once 'db_conf.php';
@@ -36,4 +37,9 @@ require_once 'db_conf.php';
 $http = new linkobject();
 //andmebaasi onbjekt
 $db = new mysql(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-
+//sessiooni objekt
+$sess = new session($http, $db);
+//test
+echo '<pre>';
+print_r($sess);
+echo '</pre>';

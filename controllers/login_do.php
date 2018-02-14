@@ -19,9 +19,11 @@ $sql = 'SELECT * FROM user '.
 $result = $db->getData($sql);
 //kontrollime, kes andmed on olemas
 if($result != false){
+
     //kasutajale tuleb avade töösessioon
     echo 'Oled peaaegu sisse logitud <br />';
 }else {
     //peab tagasi suunama sisse logima
-    echo 'Suuname sisselogimisele<br />';
+    $link = $http->getLink(array('control' => 'login'));
+    $http->redirect($link);
 }
