@@ -31,7 +31,7 @@ class linkobject extends http
         $link = $link.fixUrl($name).$this->eq.fixUrl($value);
     }
     //loome täislingi
-    function getLink($add = array()){
+    function getLink($add = array(), $aie = array()){
         $link = '';
         foreach ($add as $name => $value){
             //koostame paaride komplektid
