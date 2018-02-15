@@ -25,7 +25,8 @@ class session
     {
         $this->http = &$http;
         $this->db = &$db;
-        $this->sessionCrete();
+        $this->sid = $http->get('sid');
+        $this->checkSession();
     }
     //loome sessiooni
     function sessionCrete($user = false){
@@ -41,7 +42,7 @@ class session
             //sessiooni id loomine
             $sid = md5(uniqid(time().mt_rand(1,1000), true));
             //salvestamine
-            $sql = 'INSERT INTO session SET '.'sid'=fixDb($sid).', '.'user_id='.fixDb($user['user_id']).', '.
+            $sql = 'INSERT INTO session SET '.'sid='.fixDb($sid).', '.'user_id='.fixDb($user['user_id']).', '.
                 'user_data='.fixDb(serialize($user)).', '.'login_ip='.fixDb(REMOTE_ADDR).', '.'created=NOW()';
             //saadame päringu andmebaasi
             $this->db->query($sql);
@@ -49,6 +50,20 @@ class session
             $this->sid = $sid;
             //lisame andmed $http objekti sisse et oleks veebis kättesaadavad
             $this->http->set('sid', $sid);
+        }
+    }
+    //funktsioon, mis hakkab kustutama andmeid sessioonitabelist
+    function clearSessions(){
+        $sql = 'DELETE FROM session WHERE'.time().' - UNIX_TIMESTAMP(changed) > '.
+            $this->timeout;
+        $this->db->query($sql);
+    }
+    //sessiooni andmete kontroll
+    function checkSession(){
+        $this->clearSessions();
+        //kui kasutaja on anonüümne ja pole sid
+        if ($this->sid === false and $this->anonymous){
+            $this->sessionCrete();
         }
     }
 }
