@@ -54,7 +54,7 @@ class session
     }
     //funktsioon, mis hakkab kustutama andmeid sessioonitabelist
     function clearSessions(){
-        $sql = 'DELETE FROM session WHERE'.time().' - UNIX_TIMESTAMP(changed) > '.
+        $sql = 'DELETE FROM session WHERE '.time().' - UNIX_TIMESTAMP(changed) > '.
             $this->timeout;
         $this->db->query($sql);
     }
@@ -64,6 +64,44 @@ class session
         //kui kasutaja on anonüümne ja pole sid
         if ($this->sid === false and $this->anonymous){
             $this->sessionCrete();
+        }
+        //kui sid on juba olemas
+        if ($this->sid !== false){
+            //loeme kõik andmed, mis on antud sessiooniga seotud
+            $sql = 'SELECT * FROM session WHERE '.
+                'sid='.fixDb($this->sid);
+            $result = $this->db->getData($sql);
+            //kui andmed ei tulnud
+            if($result == false){
+                //vaatame kas anon kasutaja on lubatud
+                if ($this->anonymous){
+                    //loome anonüümse kasutaja
+                    $this->sessionCrete();
+                    define('USER_ID', 0);
+                    define('ROLE_ID', 0);
+                }else{
+                    //kui anonüümne ei ole lubatud
+                    $this->sid = false;
+                    //TODO on vaja kustutada sid ka $http objeltist
+                }
+            }else{
+                //saime andmed andmebaasist
+                //loome sessiooniandmed
+                $vars = unserialize($result[0]['svars']);
+                //kui andmed ei ole massiivi kujus, siis peab teisendama
+                if (!is_array($vars)){
+                    $vars = array();
+                }
+                $this->vars = $vars;
+                //kasutaja andmete töötlus
+                $user_data = unserialize($result[0]['user_data']);
+                define('USER_ID', $user_data, 'user_id');
+                define('ROLE_ID', $user_data, 'role_id');
+                $this->user_data = $user_data;
+            }
+        }else{
+            define('USER_ID', 0);
+            define('ROLE_ID', 0);
         }
     }
 }
